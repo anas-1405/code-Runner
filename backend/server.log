@@ -1,0 +1,34 @@
+[2026-10-24T14:14:14.789Z] [INFO] using local runner
+[2026-10-24T14:14:14.790Z] [INFO] server listening on port 3000
+[2026-10-24T14:14:22.534Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T14:14:23.735Z] [INFO] run request: 1 files, main=main.cpp, lang=cpp
+[2026-10-24T14:14:25.076Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T14:14:25.548Z] [INFO] run request: 3 files, main=main.c, lang=c
+[2026-10-24T14:14:26.658Z] [INFO] run request: 1 files, main=bad.c, lang=c
+[2026-10-24T14:14:47.884Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T14:15:12.050Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T14:15:53.172Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T14:16:03.730Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T14:16:55.678Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T14:17:04.645Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T14:17:13.440Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T14:18:38.351Z] [INFO] run request: 1 files, main=main.cpp, lang=cpp
+[2026-10-24T15:34:51.300Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T15:34:57.030Z] [ERROR] local run error: spawn UNKNOWN
+[2026-10-24T15:35:35.725Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T15:35:47.004Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T15:36:04.048Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T15:37:25.903Z] [INFO] run request: 1 files, main=file2.c, lang=c
+[2026-10-24T16:03:57.538Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T16:03:58.991Z] [ERROR] local run error: spawn UNKNOWN
+[2026-10-24T16:04:07.897Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T16:04:19.704Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T16:04:39.674Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T16:27:16.877Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T16:27:37.484Z] [INFO] run request: 1 files, main=main.py, lang=python
+[2026-10-24T16:27:45.269Z] [INFO] run request: 1 files, main=main.cpp, lang=cpp
+[2026-10-24T16:58:27.863Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T16:58:45.862Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T16:59:44.682Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T17:00:47.868Z] [INFO] run request: 1 files, main=main.c, lang=c
+[2026-10-24T19:34:09.808Z] [INFO] run request: 2 files, main=.c, lang=c

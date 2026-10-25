@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Online code runner for C, C++, and Python in isolated containers">
+  <title>Code Runner</title>
+  <script type="module" crossorigin src="/assets/index-gnk-ENXx.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Dk6ZYE5z.css">
+</head>
+<body>
+  <button id="navToggle" class="nav-toggle">☰</button>
+  <nav class="vertical-nav" id="verticalNav">
+    <div class="nav-header">
+      <span data-i18n="fileManager">مدير الملفات</span>
+      <button id="navAddFile" class="nav-add">+</button>
+    </div>
+    <div class="nav-list" id="navList"></div>
+  </nav>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <span class="logo-icon">▶</span>
+        <h1 id="title">Code Runner</h1>
+      </div>
+      <div class="topbar">
+        <div class="lang-select">
+          <select id="progLangSelect">
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="python">Python</option>
+          </select>
+        </div>
+        <button id="addonsBtn" class="btn-secondary" data-i18n="addons">Add-ons</button>
+        <div class="addons-menu" id="addonsMenu">
+          <label><input type="checkbox" id="toggleErrors" checked> <span data-i18n="showErrors">Show Errors</span></label>
+          <label><input type="checkbox" id="toggleDebugger"> <span data-i18n="showDebugger">Show Debugger</span></label>
+        </div>
+        <button id="settingsBtn" class="btn-secondary" data-i18n="settings">Settings</button>
+        <select id="uiLangSelect" class="ui-lang-select">
+          <option value="ar">عربي</option>
+          <option value="en">English</option>
+          <option value="tr">Türkçe</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="es">Español</option>
+          <option value="nl">Nederlands</option>
+          <option value="it">Italiano</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button id="addFile" class="btn-secondary" data-i18n="addFile">+ Add File</button>
+        <button id="runBtn" class="btn-run" data-i18n="run">Run</button>
+      </div>
+    </header>
+    <div class="main">
+      <div class="editor-panel">
+        <div class="panel-header" data-i18n="files">Files</div>
+        <div class="files" id="files"></div>
+      </div>
+      <div class="output-panel">
+        <div class="panel-header" data-i18n="output">Output</div>
+        <pre id="output"></pre>
+        <div id="errorsWrap">
+          <div class="panel-header error-header" data-i18n="errors">Errors</div>
+          <div class="resize-handle" id="errorsResize"></div>
+          <pre id="errors"></pre>
+        </div>
+      </div>
+    </div>
+    <div class="debugger-panel" id="debuggerPanel">
+      <div class="panel-header" data-i18n="debugger">Debugger</div>
+      <div class="debugger-bar">
+        <button id="dbgStart" class="btn-secondary" data-i18n="startDebug">Start Debug</button>
+        <button id="dbgStep" class="btn-secondary" data-i18n="step">Step</button>
+        <button id="dbgCont" class="btn-secondary" data-i18n="continue">Continue</button>
+        <button id="dbgStop" class="btn-secondary" data-i18n="stop">Stop</button>
+      </div>
+      <div class="debugger-body">
+        <div class="debugger-col">
+          <div class="panel-header" data-i18n="breakpoints">Breakpoints</div>
+          <pre id="dbgBreak"></pre>
+        </div>
+        <div class="debugger-col">
+          <div class="panel-header" data-i18n="variables">Variables</div>
+          <pre id="dbgVars"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="settingsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span data-i18n="settings">Settings</span>
+        <button id="settingsClose" class="btn-secondary" data-i18n="close">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="settings-section">
+          <div class="section-title" data-i18n="appearance">Appearance</div>
+          <div class="row">
+            <label><input type="radio" name="theme" value="dark" checked> <span data-i18n="dark">Dark</span></label>
+            <label><input type="radio" name="theme" value="light"> <span data-i18n="light">Light</span></label>
+          </div>
+        </div>
+        <div class="settings-section">
+          <div class="section-title" data-i18n="colors">Colors</div>
+          <div class="row">
+            <label data-i18n="outputColor">Output color</label>
+            <input type="color" id="outputColorPick" value="#22c55e">
+          </div>
+          <div class="row">
+            <label data-i18n="errorsColor">Errors color</label>
+            <input type="color" id="errorsColorPick" value="#f87171">
+          </div>
+        </div>
+        <div class="settings-section">
+          <button id="resetSettings" class="btn-secondary" data-i18n="reset">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
