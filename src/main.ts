@@ -183,44 +183,59 @@ function renderNav() {
   }
 }
 
-const progLangSelect = document.getElementById('progLangSelect') as HTMLSelectElement;
-progLangSelect.value = currentProgLang;
-progLangSelect?.addEventListener('change', () => {
-  const lang = progLangSelect.value;
-  currentProgLang = lang;
-  localStorage.setItem('progLang', lang);
-  for (const f of files) {
-    if (f.isMain) {
-      changeFileExt(f, lang);
-      if (!f.content.trim() || f.content === DEFAULT_CODE.c || f.content === DEFAULT_CODE.cpp || f.content === DEFAULT_CODE.python) {
-        f.content = DEFAULT_CODE[lang] || '';
+function init() {
+  console.log('[code-runner] init');
+  const progLangSelect = document.getElementById('progLangSelect') as HTMLSelectElement | null;
+  if (progLangSelect) {
+    progLangSelect.value = currentProgLang;
+    progLangSelect.addEventListener('change', () => {
+      const lang = progLangSelect.value;
+      currentProgLang = lang;
+      localStorage.setItem('progLang', lang);
+      for (const f of files) {
+        if (f.isMain) {
+          changeFileExt(f, lang);
+          if (!f.content.trim() || f.content === DEFAULT_CODE.c || f.content === DEFAULT_CODE.cpp || f.content === DEFAULT_CODE.python) {
+            f.content = DEFAULT_CODE[lang] || '';
+          }
+        }
       }
-    }
+      render();
+    });
   }
-  render();
-});
 
-document.getElementById('addFile')!.onclick = () => {
-  const lang = progLangSelect?.value || 'c';
-  const ext = getExtForLang(lang);
-  files.push({ id: nextId++, name: `file${nextId-1}${ext}`, content: '', isMain: false });
-  render();
-};
+  const addFileBtn = document.getElementById('addFile');
+  if (addFileBtn) {
+    addFileBtn.onclick = () => {
+      const lang = progLangSelect?.value || 'c';
+      const ext = getExtForLang(lang);
+      files.push({ id: nextId++, name: `file${nextId-1}${ext}`, content: '', isMain: false });
+      render();
+    };
+  }
 
-document.getElementById('navAddFile')?.addEventListener('click', () => {
-  const lang = progLangSelect?.value || 'c';
-  const ext = getExtForLang(lang);
-  files.push({ id: nextId++, name: `file${nextId-1}${ext}`, content: '', isMain: false });
-  render();
-});
+  const navAddFileBtn = document.getElementById('navAddFile');
+  if (navAddFileBtn) {
+    navAddFileBtn.addEventListener('click', () => {
+      const lang = progLangSelect?.value || 'c';
+      const ext = getExtForLang(lang);
+      files.push({ id: nextId++, name: `file${nextId-1}${ext}`, content: '', isMain: false });
+      render();
+    });
+  }
 
-const navToggle = document.getElementById('navToggle');
-const verticalNav = document.getElementById('verticalNav');
-navToggle?.addEventListener('click', () => {
-  verticalNav?.classList.toggle('open');
-});
+  const navToggle = document.getElementById('navToggle');
+  const verticalNav = document.getElementById('verticalNav');
+  if (navToggle) {
+    navToggle.addEventListener('click', () => {
+      verticalNav?.classList.toggle('open');
+    });
+  }
+}
 
-document.getElementById('runBtn')!.onclick = async () => {
+const runBtn = document.getElementById('runBtn');
+if (runBtn) {
+  runBtn.onclick = async () => {
   const output = document.getElementById('output')!;
   const errors = document.getElementById('errors')!;
   const runBtn = document.getElementById('runBtn') as HTMLButtonElement;
@@ -254,9 +269,10 @@ document.getElementById('runBtn')!.onclick = async () => {
     output.textContent = '';
     errors.textContent = 'Error: ' + e.message;
   } finally {
-    runBtn.disabled = false;
+    (runBtn as HTMLButtonElement).disabled = false;
   }
 };
+}
 
 const addonsBtn = document.getElementById('addonsBtn');
 const addonsMenu = document.getElementById('addonsMenu');
@@ -329,16 +345,21 @@ document.getElementById('resetSettings')?.addEventListener('click', () => {
   applySettings();
 });
 
-const uiLangSelect = document.getElementById('uiLangSelect') as HTMLSelectElement;
-uiLangSelect.value = getLang();
-uiLangSelect?.addEventListener('change', () => {
-  setLang(uiLangSelect.value);
-  applyI18n();
-  render();
-  renderNav();
-});
+const uiLangSelect = document.getElementById('uiLangSelect') as HTMLSelectElement | null;
+if (uiLangSelect) {
+  uiLangSelect.value = getLang();
+  uiLangSelect.addEventListener('change', () => {
+    setLang(uiLangSelect.value);
+    applyI18n();
+    render();
+    renderNav();
+  });
+}
 
 applySettings();
 applyI18n();
+if (typeof init === 'function') {
+  try { init(); } catch {}
+}
 render();
 renderNav();
